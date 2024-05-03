@@ -2,29 +2,31 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import MainPage from './Components/Header/MainPage';
-import Header from './Components/Header/Header';
 import StudentList from './Components/StudentList/StudentList';
 import AddStudent from './Components/AddStudent/AddStudent';
+import Header from './Components/Header/Header';
+import {StudentProvider} from './Components/store/auth-context';
+
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/mainPage">
-          <MainPage />
-          <Header/>
-        </Route>
-        <Route path="/addStudent">
-          <MainPage />
-          <AddStudent/>
-        </Route>
-        <Route path="/admin">
-          <MainPage />
-          <StudentList />
-        </Route>
-      </Switch>
-      
-    </Router>
+    <StudentProvider>
+        <Router>
+        <MainPage />
+        <Switch>
+          <Route path="/admin">
+            <StudentList />
+          </Route>
+          <Route path="/addStudent">
+            <AddStudent/>
+          </Route>
+          <Route path="/">
+            <Header/>
+          </Route>
+        </Switch>
+      </Router>
+    </StudentProvider>
+    
   );
 }
 

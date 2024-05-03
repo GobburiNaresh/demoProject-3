@@ -1,9 +1,14 @@
 import "./Header.css"
+import {useStudentContext} from '../store/auth-context';
 const Header = () => {
+    const {students} = useStudentContext();
+
     return(
-        <div className="student">
-            <h1>Welcome to Student Portal</h1>
+        <div>
+            <h1 className="student">Welcome to Student Portal</h1>
+            <h2>Number of Student: {students.length}</h2>
         </div>
+
     )
 }
 

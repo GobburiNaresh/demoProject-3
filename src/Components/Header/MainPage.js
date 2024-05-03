@@ -5,7 +5,7 @@ import './MainPage.css';
 const MainPage = () => {
   return (
     <header className='header'>
-      <Link to="/mainPage">
+      <Link to="/">
         <div className='logo'>Student Portal</div>
       </Link>
       <nav>
